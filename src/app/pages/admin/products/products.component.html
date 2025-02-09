@@ -1,1 +1,116 @@
-<p>products works!</p>
+<div class="container-fluid">
+<div class="row">
+    <div [ngClass]="isNewCardVisible ? 'col-8' : 'col-12'">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">
+                        Product List
+                    </div>
+                    <div class="col-6  text-end">
+                        <button class="btn btn-sm btn-success" (click)="showNewCard()">New</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                 
+                    <div class="col-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4" *ngIf='isNewCardVisible'>
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">
+                        New Product
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn btn-sm btn-success" (click)="closeNewCard()">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">SKU</label>
+                        <input type="text" name="productSku" [(ngModel)]="productObj.productSku" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Name</label>
+                        <input type="text" name="productName" [(ngModel)]="productObj.productName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Short Name</label>
+                        <input type="text" name="productShortName" [(ngModel)]="productObj.productShortName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Price</label>
+                        <input type="text" name="productPrice" [(ngModel)]="productObj.productPrice" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Category</label>
+                        <input type="text" name="categoryId" [(ngModel)]="productObj.categoryId" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Deliver Time Span</label>
+                        <input type="text" name="deliveryTimeSpan" [(ngModel)]="productObj.deliveryTimeSpan" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="">Image Url</label>
+                        <input type="text" name="productImageUrl" [(ngModel)]="productObj.productImageUrl" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="">Product Description</label>
+                        <textarea class="form-control" name="productDiscription" [(ngModel)]="productObj.productDiscription" rows="4" id=""></textarea>
+                    </div>
+               </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>

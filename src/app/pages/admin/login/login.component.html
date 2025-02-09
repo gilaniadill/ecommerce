@@ -1,1 +1,13 @@
-<p>login works!</p>
+<div class="parent">
+    <div class="login-page">
+    
+     <div class="form">
+      <form class="login-form">
+        <input type="text" [(ngModel)]="loginObj.userName" placeholder="name" name="userName"/>
+        <input type="password" [(ngModel)]="loginObj.password" placeholder="password" name="password"/>
+        <button type="button" (click)="onLogin()">login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</div>
