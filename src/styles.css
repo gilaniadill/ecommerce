@@ -1,1 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+/* Custom CSS for Navbar */
+.navbar {
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+.navbar-items{
+    justify-content: space-around;
+}
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bg-color{
+    background-color: #98D2C0;
+}
+  
+  .navbar-nav .nav-item {
+    margin-right: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #205781;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #F6F8D5;
+    cursor: pointer;
+  }
+  
+  .navbar-nav .fa {
+    font-size: 1.2rem;
+    color: #205781;
+  }
+  
+  .navbar-nav .fa:hover {
+    color: #F6F8D5;
+  }
+  
+  .navbar-nav .badge {
+    font-size: 0.7rem;
+    margin-left: 3px;
+  }
+  .search-ico{
+    cursor: pointer;
+    color: #205781;
+  }
+  .search-ico:hover{
+    color: #F6F8D5;
+  }
+  .badge{
+    background-color:  #F6F8D5;
+    color: #205781!important; 
+  }
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-item {
+    color: #F6F8D5;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #205781;
+    cursor: pointer;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  .logo {
+    max-width: 100%;   /* Allow the logo to scale to the container width */
+    max-height: 22px;  /* Limit the height of the logo */
+  }
+  @media (min-width: 350px) and (max-width: 600px) {
+  .logo {
+    max-width: 100%;   /* Allow the logo to scale to the container width */
+    max-height: 14px;  /* Limit the height of the logo */
+  }
+}
