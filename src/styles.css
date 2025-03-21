@@ -1,86 +1,353 @@
-/* Custom CSS for Navbar */
-.navbar {
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-.navbar-items{
-    justify-content: space-around;
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Emblema+One&family=Outfit:wght@100..900&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+:root {
+  --mainColor: #205781;
+  --alternative: #4F959D;
+  --secondaryColor: #F6F8D5;
+  --primaryColor: #98D2C0;
+  --font:"Poppins", sans-serif;
 }
-.nav-item{
+
+
+/* navbar */
+
+.navbar-full {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menu-items {
+  color: var(--mainColor);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  cursor: pointer;
+  flex-grow: 1; /* Allow it to take available space */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.menu-items ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem; /* Adjust spacing between menu items */
+  padding: 0;
+  margin: 0;
+}
+
+.menu-items ul li{
+  transition: color 0.2s linear;
+}
+.menu-items ul li:hover{
+  color: var(--secondaryColor);
+}
+.navMenu{
+  background-color: var(--primaryColor);
+  height: 15dvh;
+  position: absolute;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+  height: 8dvh;
+  
+}
+.menue-icons{
+  color: var(--mainColor);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  cursor: pointer;
+  font-size: larger;
+  flex-grow: 0; /* Allow it to take available space */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.menue-icons ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem; /* Adjust spacing between menu items */
+  padding: 0;
+  margin: 0;
+}
+.menue-icons li{
+  transition: color 0.2s linear;
+}
+
+.menue-icons li:hover{
+  color: var(--secondaryColor);
+  
+}
+.nav-link .badge{
+  background-color: var(--secondaryColor);
+  color: var(--mainColor);
+  padding: 2px 6px;
+
+}
+
+.btn-login {
+  border: 2px solid transparent; /* Transparent border to maintain size */
+  border-radius: 12px;
+  background-color: var(--mainColor);
+  color: var(--secondaryColor);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: background-color 0.2s linear, border-color 0.2s linear;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: var(--secondaryColor);
+  border-color: var(--mainColor); /* Change border color instead of adding a new border */
+  color: var(--mainColor);
+}
+
+/* Modal Background Overlay */
+.modal.fade .modal-dialog {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal Box Styling */
+.search-modal {
+  background: var(--primaryColor); /* Matching your theme */
+  color: var(--mainColor);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Box */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 45px;
+  border-radius: 25px;
+  border: 2px solid var(--mainColor); /* Use your main color */
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+  background: var(--secondaryColor);
+  color: var(--mainColor);
+}
+
+/* Search Icon Inside Input */
+.search-icon {
+  position: absolute;
+  left: 95%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--alternative);
+  font-size: 14px;
+}
+
+/* Input Focus Effect */
+.search-input:focus {
+  box-shadow: 0px 0px 10px rgba(32, 87, 129, 0.5); /* Subtle glow */
+  border-color: var(--alternative);
+}
+
+@media screen and (max-width: 1020px){
+  .navMenu .menu-items{
+    display: none;
+  }
+  .menue-icons{
+    display: none;
+  }
+}
+
+/* mobile menu */
+.mobile-menu{
+  height: 100dvh;
+  background-color: var(--alternative);
+  position: relative;
+  width: 300px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 30px;
+  font-family: var(--font);
+  left: 0; /* Set left to 0, but use transform to move it */
+  transform: translateX(-100%); /* Move it out */
+  transition: transform 0.5s ease-in-out;
+  
+}
+
+.mobile-menu.active{
+  transform: translateX(0);
+}
+.menu-items-mobile ul{
+ list-style: none;
+ display: flex;
+ flex-direction: column;
+ align-items: start;
+  gap: 10px;
+  padding: 5px;
+  position: relative;
+  top: 100px; 
+  color: var(--secondaryColor);
+}
+.menu-items-mobile ul li{
+  cursor: pointer;
+  transition: color 0.2s linear;
+  border-bottom: 1px solid var(--secondaryColor);
+  width: 270px;
+  align-items: center;
+  padding: 10px 0;
+  position: relative;
+}
+.menu-items-mobile ul li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Move the border to the most left */
+  width: 100%; /* Make it span full width */
+  background-color: var(--secondaryColor);
+}
+
+.menu-items-mobile ul li:hover{
+  color: var(--mainColor);
+}
+
+/* Hambarger */
+
+.menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  position: relative;
+  color: var(--mainColor);
+  z-index: 1000;
+  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  display: none;
+}
+.menu svg{
+  width: 65px;
+  height: 60px;
+}
+.line {
+  fill: none;
+  stroke: var(--mainColor);
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+@media (min-width: 200px) and (max-width: 499px) {
+  .logo img{
+    height: 5dvh;
+  }
+  .logo{
+    /* bottom: -28px;
+    position: relative; */
+  }
+  .menu svg{
+    height: 40px;
+    width: 40px;
+  }
+} 
+@media screen and (max-width: 1050px) {
+  .navbar-full {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-.bg-color{
-    background-color: #98D2C0;
-}
-  
-  .navbar-nav .nav-item {
-    margin-right: 10px;
-  }
-  
-  .navbar-nav .nav-link {
-    color: #205781;
-    font-weight: 500;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #F6F8D5;
-    cursor: pointer;
-  }
-  
-  .navbar-nav .fa {
-    font-size: 1.2rem;
-    color: #205781;
-  }
-  
-  .navbar-nav .fa:hover {
-    color: #F6F8D5;
-  }
-  
-  .navbar-nav .badge {
-    font-size: 0.7rem;
-    margin-left: 3px;
-  }
-  .search-ico{
-    cursor: pointer;
-    color: #205781;
-  }
-  .search-ico:hover{
-    color: #F6F8D5;
-  }
-  .badge{
-    background-color:  #F6F8D5;
-    color: #205781!important; 
-  }
-  .dropdown-menu {
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dropdown-item {
-    color: #F6F8D5;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f8f9fa;
-    color: #205781;
-    cursor: pointer;
+    justify-content: space-between;
+    position: relative;
+    height: 100%; /* Ensure the navbar has a proper height */
   }
 
-  .nav-item.dropdown:hover .dropdown-menu {
+  /* Position hamburger menu (left) */
+  .menu {
     display: block;
     position: absolute;
-    top: 100%;
-    left: 0;
+    left: 10px; /* Small spacing from the left */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
   }
+
+  /* Center the logo */
   .logo {
-    max-width: 100%;   /* Allow the logo to scale to the container width */
-    max-height: 22px;  /* Limit the height of the logo */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  @media (min-width: 350px) and (max-width: 600px) {
-  .logo {
-    max-width: 100%;   /* Allow the logo to scale to the container width */
-    max-height: 14px;  /* Limit the height of the logo */
+
+  /* Move menu icons (right side) */
+  .menue-icons {
+    display: flex;
+    position: absolute;
+    right: -10px; /* Small spacing from the right */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+  }
+
+  /* Hide menu-items (desktop navigation) */
+  .menu-items {
+    display: none;
+  }
+
+  /* Hide login button */
+  .login {
+    display: none;
   }
 }
+@media (min-width: 500px) and (max-width:1024px) {
+  .menu svg{
+    height: 65px;
+    width: 65px;
+  }
+
+} 
