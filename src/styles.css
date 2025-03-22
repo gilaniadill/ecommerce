@@ -6,15 +6,30 @@
   --primaryColor: #98D2C0;
   --font:"Poppins", sans-serif;
 }
-
-
+.main-content { /* Replace with your first content class */
+  margin-top: 15dvh;
+}
 /* navbar */
+.navMenu{
+  background-color: var(--primaryColor);
+  height: 15dvh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's on top */
+  
+}
 
 .navbar-full {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  
 }
 
 .menu-items {
@@ -44,17 +59,10 @@
 .menu-items ul li:hover{
   color: var(--secondaryColor);
 }
-.navMenu{
-  background-color: var(--primaryColor);
-  height: 15dvh;
-  position: absolute;
-  display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .logo img{
-  height: 8dvh;
+  height: 40px;
   
 }
 .menue-icons{
@@ -181,7 +189,7 @@
 .mobile-menu{
   height: 100dvh;
   background-color: var(--alternative);
-  position: relative;
+  position: fixed;
   width: 300px;
   top: 0;
   display: flex;
@@ -192,6 +200,8 @@
   left: 0; /* Set left to 0, but use transform to move it */
   transform: translateX(-100%); /* Move it out */
   transition: transform 0.5s ease-in-out;
+  z-index: 999;
+  
   
 }
 
@@ -241,7 +251,7 @@
   padding: 0;
   position: relative;
   color: var(--mainColor);
-  z-index: 1000;
+  z-index: 1004;
   display: none;
   display: flex;
   justify-content: center;
@@ -351,3 +361,6 @@
   }
 
 } 
+/* navbar end */
+
+/* card css */

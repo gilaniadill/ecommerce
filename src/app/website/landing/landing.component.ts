@@ -17,4 +17,6 @@ export class LandingComponent {
   showSearch(){
     this.isVisible = !this.isVisible;
   }
+
+  
 }
