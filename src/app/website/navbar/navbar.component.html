@@ -9,11 +9,11 @@
 
     <div class="menu-items">
       <ul class="d-flex flex-row gap-4 list-unstyled">
-        <li>Home</li>
-        <li>Shop</li>
-        <li>Categories</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a  routerLink="/shop">Shop</a></li>
+        <li><a [routerLink]="['/home']" fragment="category">Categories</a></li>
+        <!-- <li><a href="">About</a></li> -->
+        <li><a [routerLink]="['/home']" fragment="contact">Contact</a></li>
       </ul>
     </div>
 
@@ -22,36 +22,37 @@
         <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">
           <li class="fa-solid fa-magnifying-glass"></li>
         </a>
-        <a href="" class="nav-link position-relative">
+        <a href="" class="nav-link">
           <li class="fa-solid fa-shopping-cart"></li>
           <span class="badge top-1 start-99 translate-middle rounded-pill"><small>3</small></span>
         </a>
+
+        <a href="#" class="nav-link login">
+          <i class="fa fa-sign-in"></i>
+        </a>
       </ul>
     </div>
-
-
-    <div class="login">
-      <button class="btn-login" id="SignUp">Login</button>
-    </div>
-
-    <!-- Search Modal -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered"> <!-- Centered Modal -->
-        <div class="modal-content search-modal">
-          <div class="modal-header border-0">
-            <h5 class="modal-title" id="searchModalLabel">🔍 Search</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="search-container">
-              <i class="fa-solid fa-magnifying-glass search-icon"></i>
-              <input type="text" class="form-control search-input" placeholder="Type to search...">
+     
+        <!-- Search Modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered"> <!-- Centered Modal -->
+            <div class="modal-content search-modal">
+              <div class="modal-header border-0">
+                <h5 class="modal-title" id="searchModalLabel">🔍 Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="search-container">
+                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                  <input type="text" class="form-control search-input" placeholder="Type to search...">
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    
 
+   
        
     <div class="toggle">
       <button class="menu" (click)="openMenu()"
@@ -72,14 +73,17 @@
     <div class="mobile-menu" [class.active]="isMenuOpen">
       <div class="menu-items-mobile">
         <ul class="menu-list">
-          <li routerLink="/">Home</li>
-          <li>Shop</li>
-          <li>Categories</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a  routerLink="/shop">Shop</a></li>
+          <li><a [routerLink]="['/home']" fragment="category">Categories</a></li>
+          <!-- <li><a href="">About</a></li> -->
+          <li><a [routerLink]="['/home']" fragment="contact">Contact</a></li>
         </ul>
       </div>
     </div>
+    
 
 </div>
-
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

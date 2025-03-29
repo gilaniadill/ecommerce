@@ -4,11 +4,12 @@ import { LayoutComponent } from './pages/admin/layout/layout.component';
 import { ProductsComponent } from './pages/admin/products/products.component';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
 import { LandingComponent } from './website/landing/landing.component';
+import { ShopComponent } from './website/shop/shop.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'shop',
+        redirectTo: 'home',
         pathMatch:'full'
     },
     {
@@ -16,8 +17,12 @@ export const routes: Routes = [
         component:LoginComponent
     },
     {
-        path: 'shop',
+        path: 'home',
         component:LandingComponent
+    },
+    {
+        path: 'shop',
+        component:ShopComponent
     },
     {
         path:'',
