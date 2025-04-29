@@ -7,15 +7,29 @@
       </a>
     </div>
 
+
+
     <div class="menu-items">
-      <ul class="d-flex flex-row gap-4 list-unstyled">
+      <ul class="d-flex flex-row gap-4 list-unstyled position-relative">
         <li><a routerLink="/home">Home</a></li>
-        <li><a  routerLink="/shop">Shop</a></li>
-        <li><a [routerLink]="['/home']" fragment="category">Categories</a></li>
-        <!-- <li><a href="">About</a></li> -->
+        <li><a routerLink="/shop">Shop</a></li>
+    
+        <!-- Hover Dropdown for Categories -->
+        <li class="dropdown hover-dropdown">
+          <a href="#" class="nav-link">Categories</a>
+          <ul class="dropdown-List">
+            <li *ngFor="let category of categoryList">
+              <a [routerLink]="['/products', category.categoryId]" routerLinkActive="router-link-active" >{{category.categoryName}}</a>
+              <!-- <a (click)="test(category.categoryId)" (click)="navigateToProducts(category.categoryId)"  >{{category.categoryName}}</a> -->
+            </li>
+          </ul>
+        </li>
+        
+    
         <li><a [routerLink]="['/home']" fragment="contact">Contact</a></li>
       </ul>
     </div>
+
 
     <div class="menue-icons">
       <ul class="d-flex flex-row justify-content-between gap-4">
@@ -75,15 +89,27 @@
         <ul class="menu-list">
           <li><a routerLink="/home">Home</a></li>
           <li><a  routerLink="/shop">Shop</a></li>
-          <li><a [routerLink]="['/home']" fragment="category">Categories</a></li>
+          <li><a [routerLink]="['/products', 1]">Go to Fruits</a></li>
+          
+          <li class="dropdown hover-dropdown">
+            <a href="#" class="nav-link">Categories</a>
+            <ul class="dropdown-List">
+              <li *ngFor="let category of categoryList">
+                <a routerLinkActive="router-link-active">
+                  {{category.categoryName}}
+                </a>
+              </li>
+            </ul>
+          </li>
           <!-- <li><a href="">About</a></li> -->
           <li><a [routerLink]="['/home']" fragment="contact">Contact</a></li>
+         
+
         </ul>
       </div>
     </div>
     
 
 </div>
-<div class="container-fluid">
+
   <router-outlet></router-outlet>
-</div>

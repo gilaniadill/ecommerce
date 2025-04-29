@@ -7,7 +7,7 @@ import { ProductService } from '../../services/product/product.service';
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [NavbarComponent, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
@@ -19,24 +19,24 @@ export class ShopComponent {
 
   constructor(private prodSrv: ProductService) {}
   ngOnInit(): void {
-    this.getAllProducts("Fruits & Vegetables");
+    this.getAllProducts();
   }
-
-  getAllProducts(categoryName: string) {
+  getAllProducts() {
     this.isLoading = true;
+    const allowedCategories = ["fruits", "vegetables"];
+  
     this.prodSrv.getProducts().subscribe((res: any) => {
       let filteredProducts = res.data
-        .filter((product: any) => 
-          product.categoryName?.toLowerCase() === categoryName.toLowerCase() && // Match category
-          product.productImageUrl // Ensure image URL is present
+        .filter((product: any) =>
+          allowedCategories.includes(product.categoryName?.toLowerCase()) &&
+          product.productImageUrl
         )
-        .sort((a: any, b: any) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()); // Sort by latest date
+        .sort((a: any, b: any) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
   
-      // Check if images are actually loading
       const validProducts: any[] = [];
       let checkedCount = 0;
   
-      filteredProducts.forEach((product:any) => {
+      filteredProducts.forEach((product: any) => {
         const img = new Image();
         img.src = product.productImageUrl;
   

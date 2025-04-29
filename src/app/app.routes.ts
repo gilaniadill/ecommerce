@@ -5,6 +5,8 @@ import { ProductsComponent } from './pages/admin/products/products.component';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
 import { LandingComponent } from './website/landing/landing.component';
 import { ShopComponent } from './website/shop/shop.component';
+import { NavbarComponent } from './website/navbar/navbar.component';
+import { CategoryProductsComponent } from './website/category-products/category-products.component';
 
 export const routes: Routes = [
     {
@@ -17,13 +19,28 @@ export const routes: Routes = [
         component:LoginComponent
     },
     {
-        path: 'home',
-        component:LandingComponent
+        path: '',
+        component:NavbarComponent,
+        children:[
+            {
+                path:'home',
+                component:LandingComponent
+            },
+            {
+                path: 'shop',
+                component:ShopComponent
+            },
+            {
+                path:'products/:id',
+                component:CategoryProductsComponent
+            }
+
+        ]
     },
-    {
-        path: 'shop',
-        component:ShopComponent
-    },
+    // {
+    //     path: 'shop',
+    //     component:ShopComponent
+    // },
     {
         path:'',
         component:LayoutComponent,

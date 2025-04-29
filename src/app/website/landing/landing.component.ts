@@ -15,25 +15,54 @@ import { ActivatedRoute } from '@angular/router';
 export class LandingComponent implements OnInit, AfterViewInit  {
   
   productList:any[]=[];
+  categoryList:any[]=[];
   isLoading: boolean = true;
 
   constructor(private prodSrv:ProductService, private route: ActivatedRoute){
 
   }
   ngOnInit():void{
-   this.getAllProducts("Fruits & Vegetables");
+   this.getAllProducts();
   }
-  getAllProducts(categoryName: string){
+  getAllProducts() {
     this.isLoading = true;
+    const allowedCategories = ["fruits", "vegetables"];
+  
     this.prodSrv.getProducts().subscribe((res: any) => {
-      this.productList = res.data
-        .filter((product: any) => product.categoryName.toLowerCase() === categoryName.toLowerCase()) // Filter by category name (case insensitive)
-        .sort((a: any, b: any) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()) // Sort by latest date
-        .slice(0, 4); // Limit to 4 products
-        this.isLoading=false;
+      let filteredProducts = res.data
+        .filter((product: any) =>
+          allowedCategories.includes(product.categoryName?.toLowerCase()) &&
+          product.productImageUrl
+        )
+        .sort((a: any, b: any) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
+  
+      const validProducts: any[] = [];
+      let checkedCount = 0;
+  
+      filteredProducts.forEach((product: any) => {
+        const img = new Image();
+        img.src = product.productImageUrl;
+  
+        img.onload = () => {
+          validProducts.push(product);
+          checkLoadingComplete();
+        };
+  
+        img.onerror = () => {
+          console.warn("Broken Image URL:", product.productImageUrl);
+          checkLoadingComplete();
+        };
+      });
+  
+      const checkLoadingComplete = () => {
+        checkedCount++;
+        if (checkedCount === filteredProducts.length) {
+          this.productList = validProducts;
+          this.isLoading = false;
+        }
+      };
     });
   }
-
 
   ngAfterViewInit() {
     this.route.fragment.subscribe(fragment => {
@@ -42,4 +71,11 @@ export class LandingComponent implements OnInit, AfterViewInit  {
       }
     });
   }
+
+  getAllCategory(){
+    this.prodSrv.getCategory().subscribe((res:any)=>{
+      this.categoryList=res.data;
+    })
+  }
+
 }

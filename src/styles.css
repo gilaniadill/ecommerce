@@ -20,12 +20,12 @@ body{
   font-family: var(--font);
 }
 .main-content { /* Replace with your first content class */
-  margin-top: 15dvh;
+  margin-top: 100px;
 }
 /* navbar */
 .navMenu{
   background-color: var(--primaryColor);
-  height: 15dvh;
+  height: 100px;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -76,6 +76,53 @@ body{
 .menu-items ul a:hover{
   color: var(--secondaryColor);
 }
+
+.hover-dropdown {
+  position: relative;
+}
+
+.hover-dropdown .dropdown-List {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--primaryColor);
+  padding: 0.5rem 1rem;
+  min-width: 160px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hover-dropdown:hover > .dropdown-List {
+  display: block;
+}
+
+.dropdown-List li {
+  padding: 0.25rem 0;
+  color: var(--mainColor);
+  border-bottom: solid 1px var(--mainColor);  
+}
+
+.dropdown-List a {
+  text-decoration: none;
+  color: var(--secondaryColor);
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s linear;
+}
+
+.dropdown-List a:hover {
+  text-decoration: underline;
+  color: var(--mainColor);
+  background-color: var(--primaryColor);
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.2s linear;
+}
+
 
 
 .logo img{
@@ -380,6 +427,22 @@ body{
   }
 
 } 
+
+@media (min-width: 1050px) {
+  .mobile-menu{
+    display: none;
+
+  }
+   .menu svg{
+    display: none;
+   }
+}
+@media (max-width: 1049px) {
+  .mobile-menu{
+    display: block;
+  }
+  
+}
 /* navbar end */
 
 /* card css */
@@ -398,13 +461,31 @@ body{
  .image-block-3 .image-card-3{
   background-color: var(--secondaryColor);
  }
-
-.btns .btn-primary{
+ .btns .btn-primary{
   background-color: var(--mainColor);
-}
-.btns .btn-dark{
+  color: var(--secondaryColor);
+  border: none;
+ }
+ .btns .btn-primary:hover,
+ .btns .btn-primary:active,
+ .btns .btn-primary:focus
+ {
   background-color: var(--alternative);
-}
+  color: var(--secondaryColor);
+ }
+
+ .btns .btn-dark{
+  background-color: var(--alternative);
+  color: var(--secondaryColor);
+  border: none;
+ }
+ .btns .btn-dark:hover,
+ .btns .btn-dark:active,
+ .btns .btn-dark:focus
+ {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+ }
 
 .main-color{
   color: var(--mainColor);
@@ -546,6 +627,14 @@ input[type=number]::-webkit-outer-spin-button {
 .product-item .button-area .btn-primary {
   background-color: white;
   color:var(--mainColor);
+  border: var(--mainColor);
+}
+.product-item .button-area .btn-primary:hover,
+.product-item .button-area .btn-primary:focus,
+.product-item .button-area .btn-primary:active
+ {
+  background-color: var(--mainColor);
+  color:var(--secondaryColor);
 }
 .product-item:hover .button-area {
   bottom: 0;
@@ -760,7 +849,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
   font-size: 0.75em;
-  color: #999;
+  color: var(--secondaryColor);
   top: -5px;
   -webkit-transition: all 0.225s ease;
   transition: all 0.225s ease;

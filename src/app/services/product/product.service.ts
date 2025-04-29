@@ -6,11 +6,15 @@ import { Constant } from '../constants/constan';
   providedIn: 'root',
 })
 export class ProductService {
+ 
   constructor(private http: HttpClient) {
 
   }
   getCategory(){
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_CATEGORY)
+  }
+  getProductsByCategory(id: Number){
+    return this.http.get(`${Constant.API_END_POINT}${Constant.METHODS.GET_PRODUCTS_BY_CATEGORY}?id=${id}`)
   }
   getProducts(){
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT)
